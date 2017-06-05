@@ -187,10 +187,10 @@ void ABlockCommunication (int iter, double *pAblock, double* pMatrixAblock,
 // Cyclic shift of matrix B blocks in the process grid columns 
 void BblockCommunication (double *pBblock, int BlockSize) {
   MPI_Status Status;
-  int NextProc = GridCoords[0] + 1;
-  if ( GridCoords[0] == GridSize-1 ) NextProc = 0;
-  int PrevProc = GridCoords[0] - 1;
-  if ( GridCoords[0] == 0 ) PrevProc = GridSize-1;
+  int NextProc = GridCoords[0] - 1;
+  if ( GridCoords[0] == 0 ) NextProc = GridSize-1;
+  int PrevProc = GridCoords[0] + 1;
+  if ( GridCoords[0] == GridSize-1 ) PrevProc = 0;
 
   MPI_Sendrecv_replace( pBblock, BlockSize*BlockSize, MPI_DOUBLE,
     NextProc, 0, PrevProc, 0, ColComm, &Status);
