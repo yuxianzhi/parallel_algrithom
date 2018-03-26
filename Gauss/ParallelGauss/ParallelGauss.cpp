@@ -345,7 +345,7 @@ void TestResult(double* pMatrix, double* pVector, double* pResult, int Size) {
 	}
 
     for (int i=0; i<Size; i++) {
-	  if (fabs(pRightPartVector[i]-pVector[i]) > Accuracy))
+	  if (fabs(pRightPartVector[i]-pVector[i]) > Accuracy)
         equal = 1;
     }
     if (equal == 1) 
